@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon-aws.png" />
+  </head>
+  
+  <style>
+    * {
+      margin: 2;
+      padding: 2;
+      box-sizing: border-box;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      font-size: 100%;
+      color: #040404;
+      line-height: 1;
+    }
+    .content {
+      background-color: #e3f2fd;
+      padding: 20px;
+      margin: 20px auto 0 auto;
+      box-shadow: 0px 6px 10px;
+      border-radius: 5px;
+    }
+   
+    .row{
+      padding: 5px;
+    }
+   
+
+    fieldset.grupo .row{
+      float: left;
+      padding:20px ;
+      margin-bottom: 20px;
+      width: 400px;
+      height: 180px;
+      border-radius: 5px;
+      
+     
+      
+    }
+    legend {
+      margin: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+   
+    
+    label {
+      display: inline-block;
+      margin-bottom: 0.2em;
+    }
+    input {
+      padding: 2px;
+      outline: none;
+      padding-left: 10px;
+    }
+    input[id="curso"],
+    input[id="instituicao"] {
+      width: 380px;
+    }
+    
+    input[type="text"],
+    input[type="date"],
+    input[type="number"] {
+      border: none;
+      border-bottom: 2px solid #c2cbce;
+      transition: 0.3s all ease-in-out;
+    }
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    input[type="number"]:focus {
+    
+      color: #141414;
+      font-weight: 600px;
+      letter-spacing: 2px;
+      border-color: rgba(7, 238, 238, 0.842);
+    }
+
+    input[id="crea"]{
+        width: 200px;
+
+    }
+    input[id="empresa"]{
+      width: 350px;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+
+    textarea{
+      padding: 10px;
+      resize: none;
+      outline: none;
+      width: 35%;
+    }
+    .btn-link{
+        text-decoration: none;
+        border: 1px solid #797878;
+        width: 150px;
+        padding: 0.2em 0.6em;
+        font-size: 18px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        display: flex;
+        background-color:#5F9EA0;
+        justify-content: center;
+        margin-bottom: 1em;
+        position: absolute;
+        top: 126%;
+        left: 45%;
+        margin-right: -50%;
+        box-shadow: 2px 2px 2px rgba(228, 223, 223, 0.2);
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        color: white;
+        
+      
+    }
+  </style>
+
+  <body>
+    
+    <div class="content">
+      <form action="" autocomplete="off">
+        <fieldset class="grupo">
+          <legend>Escolaridade e informações complementares</legend>
+          <div class="row">
+            <label for="curso">Curso técnico</label>
+            <input type="text" id="curso" name="curso" placeholder="" required />
+          </div>
+          <div class="row">
+            <label for="instituicao">Instituição</label>
+            <input type="text" id="instituicao" name="instituicao" required />
+          </div>
+
+          <div class="row">
+            <label for="conclusao">Conclusão</label>
+            <input type="date" id="conclusao"  name="conclusao" placeholder="Conclusao" required />
+          </div>
+          <div class="row">
+            <label for="number">Licença técnico em manutenção</label>
+            <input type="number" id="licenca"  name="licenca"  placeholder="Digite o código ANAC"  required />
+            <input type="file"    id="licenca"/>
+          </div>
+
+          <div class="row">
+            <label for="crea">CREA</label>
+            <input type="number"  id="crea" name="crea"  placeholder="Digite o n° do CREA"/>
+           
+            
+          </div>
+          <div class="row">
+          <label for=" file">Passaporte (visto):</label>
+          <input type="file" id="upload" />
+          </div>
+        </fieldset>
+
+        <fieldset >
+          <legend>Histórico Profissional</legend>
+
+          <div class="row">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" placeholder="" required/>
+            
+          </div>
+          <div class="row">
+            <label for="dataentrada">Data Entrada</label>
+            <input type="date" id="dataentrada" placeholder="" required /> 
+          
+          </div>
+
+          <div class="row">
+            <label for="datasaida">Data Saída</label>
+            <input type="date" id="datasaida" placeholder="" required />
+          </div>
+          <div class="row">
+            <label for="">Descreva sua experiência Profissional:</label>
+            </div>
+            <div class="row">
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+          </div>
+
+          
+        </fieldset>
+      </form>
+    </div>
+     <a class="btn-link" href="endcadastro.html">Concluir</a>
+</body>
+</html>
