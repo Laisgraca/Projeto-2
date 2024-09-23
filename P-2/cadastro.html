@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon-aws.png" />
+    
+  </head>
+  <!---com funcao adicionada--->
+  <style>
+    * {
+      margin: 3;
+      padding: 3;
+      box-sizing: border-box;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      font-size: 100%;
+      color: #040404;
+      line-height: 1;
+    }
+    .content {
+      background-color: #e3f2fd;
+      padding: 50px;
+      margin: 50px auto 0 auto;
+      box-shadow: 0px 6px 10px;
+      border-radius: 5px;
+    }
+    .row label {
+      margin-bottom: 0.2em;
+    }
+    input[type="date"],
+    input[type="contato"] {
+      padding: 0.2em;
+      display: inline-block;
+    }
+
+    fieldset.grupo .row {
+      float: left;
+      margin-right: 1em;
+      width: 380px;
+      height: 140px;
+    }
+    legend {
+      margin: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    label:not([for="feminino"], [for="masculino"]) {
+      display: inline-block;
+      width: 100px;
+    }
+    label {
+      display: inline-block;
+      margin-bottom: 0.2em;
+    }
+    input {
+      padding: 2px;
+      outline: none;
+      padding-left: 10px;
+    }
+    input[id="nome"],
+    input[id="email"] {
+      width: 360px;
+    }
+    input[id="numero"] {
+      width: 75px;
+    }
+    input[type="text"],
+    input[type="date"],
+    input[type="email"],
+    input[type="number"] {
+      border: none;
+      border-bottom: 2px solid #c2cbce;
+      transition: 0.3s all ease-in-out;
+    }
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus {
+      color: #141414;
+      font-weight: 600px;
+      letter-spacing: 1px;
+      border-color: rgba(7, 238, 238, 0.842);
+    }
+
+    input[type="radio"]{
+      margin-top: 0px;
+      margin-bottom: 0px;
+      padding: 0.2em;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+
+  <body>
+    
+    <div class="content">
+      <form action="" autocomplete="off">
+        <fieldset class="grupo">
+          <legend>Dados Pessoais</legend>
+          <div class="row">
+            <label for="nome">Nome completo</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Digite seu nome"
+              required
+            />
+          </div>
+          <div class="row">
+            <label for="dtnasc">Data de Nascimento</label>
+            <input type="date" id="dtnasc" name="dtnasc" required />
+          </div>
+
+          <div class="row">
+            <label for="contato">Contato</label>
+            <input
+              type="number"
+              id="contato"
+              name="contato"
+              placeholder="contato"
+              required
+            />
+          </div>
+          <div class="row">
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="e-mail"
+              required
+            />
+          </div>
+
+          <div class="row">
+            <label for="row">Sexo</label>
+            <input type="radio" value="Feminino" id="feminino" name="sexo" />
+            <label for="feminino">Feminino</label>
+            <input type="radio" value="Masculino" id="masculino" name="sexo" />
+            <label for="masculino">Masculino</label>
+          </div>
+          <div class="row">
+          <label for=" file">CPF/RG (frente e verso) anexo:</label>
+          <input type="file" id="upload" multiple />
+          <img id="img" style="width: 60px" />
+          <br>
+          <script src="/js/jquery-3.7.1.js"></script>
+          <script>
+            $(function () {
+              $('#upload').change(function () {
+                const file = $(this)[0].files[0]
+                const fileReader = new FileReader()
+                fileReader.onloadend = function () {
+                  $('#img').attr('src', fileReader.result)
+                }
+                fileReader.readAsDataURL(file)
+              })
+            })
+          </script>
+          </div>
+        </fieldset>
+
+        <fieldset class="grupo">
+          <legend>Endereço</legend>
+
+          <div class="row">
+            <label for="cep">CEP</label>
+            <input
+              type="text"
+              id="cep"
+              placeholder="CEP"
+              onblur="buscaCep(this.value)"
+            />
+          </div>
+          <div class="row">
+            <label for="logradouro">Logradouro</label>
+            <input
+              type="text"
+              id="logradouro"
+              placeholder="Logradouro"
+              required
+            />
+          </div>
+
+          <div class="row">
+            <label for="numero">Número</label>
+            <input type="number" id="numero" placeholder="Numero" required />
+          </div>
+          <div class="row">
+            <label for="bairro">Bairro</label>
+            <input type="text" id="bairro" placeholder="Bairro" required />
+          </div>
+
+          <div class="row">
+            <label for="cidade">Cidade</label>
+            <input type="text" id="cidade" placeholder="Cidade" required />
+          </div>
+
+          <div class="row">
+            <label for="uf">UF</label>
+            <select name="estados-brasil">
+              <option disabled selected>--SELECIONAR ESTADO--</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <script>
+          function buscaCep(cep) {
+            fetch("https://viacep.com.br/ws/" + cep + "/json/")
+              .then((response) => {
+                if (!response.ok) {
+                  console.log("Erro de conexão");
+                }
+
+                return response.json();
+              })
+              .then((data) => {
+                console.log(data);
+                logradouro.value = data.logradouro;
+                bairro.value = data.bairro;
+                cidade.value = data.localidade;
+                estado.value = data.estado;
+              })
+              .catch((error) => {
+                console.log("Erro: ", error);
+              });
+          }
+        </script>
+      </form>
+    </div>
+  </body>
+</html>
